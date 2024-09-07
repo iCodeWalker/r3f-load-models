@@ -21,3 +21,19 @@
 
     To use draco models we need to use, DRACOLoader() class, and add it to GLTfLoader instance with setDRACOLoader().
     To do this we need to pass 3rd argument to the useLoader() and send it a function that will give us access to the loader instance.
+
+## Lazy Loading
+
+    Initially the r3f is holding the rendering of the Experience.js file as long as everything isn't ready in our scene, this also includes the loading of the external models.
+    So if we have a large model that takes a bit time to load than in that user will see a white screen for the time being the model is being loaded.
+
+    To implement lazy loading in r3f we use "Suspence".
+    <Suspence> is a React component that will wait for the process to be done before rednering the component.
+
+    To implement this we have to create a different component and shift the model loading part inside this new component, so that the suspence component will wait for the component to laod and after loading is comlete it will render the componet inside the Experience. The other meshes, and lights will be loaded before hand.
+
+    One feature about using Suspence is "fallback", fallback is what the user will see if the component is not ready or when it is not loaded completely. It's a type of placeholder.
+
+    <Supence fallback={}>
+
+    In fallback we can put something that user will see while it's loading.
