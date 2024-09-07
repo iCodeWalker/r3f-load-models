@@ -55,3 +55,12 @@
 ## Multiple instances
 
     If we want ot have multiple models in the scene. We can use the Clone helper that Drei provides.
+
+## GLTf to component
+
+    If we want to manipulate or change the properties of different parts of the burger, we need to traverse the loaded model, search the right child, save it in some way, and apply whatever we need to do the changes to render properly.
+
+    It would be very convinent if we have burger as component, with everything inside a simple JSX that we can manipulate easily.
+
+    The GLTf -> React Three fiber does the same.
+    https://gltf.pmnd.rs/

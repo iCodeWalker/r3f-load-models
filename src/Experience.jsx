@@ -8,6 +8,7 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 
 import Model from "./Model";
 import Placeholder from "./Placeholder";
+import Hamburger from "./Hamburger";
 
 export default function Experience() {
   // ######### Loading a model
@@ -66,7 +67,8 @@ export default function Experience() {
         // }
         fallback={<Placeholder position-y={0.6} scale={[2, 3, 2]} />}
       >
-        <Model />
+        {/* <Model /> */}
+        <Hamburger scale={0.36} />
       </Suspense>
     </>
   );
