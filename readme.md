@@ -34,6 +34,20 @@
 
     One feature about using Suspence is "fallback", fallback is what the user will see if the component is not ready or when it is not loaded completely. It's a type of placeholder.
 
-    <Supence fallback={}>
+    <Suspence fallback={}>
 
     In fallback we can put something that user will see while it's loading.
+
+## GLTf loading with drei
+
+    Drei has multiple loader like useGLTf and usefBX.
+
+## Preloading
+
+    Our models will start loading only when the component is instantiated or is being called to rendered.
+
+    But if we had a conditional redering to display the component, and when the condition becomes true the user will first see the loader and than the model will get redered when the loading gets completed.
+
+    By user perspective we need to load the model as soon as possible to avoid laoding delays.
+
+    We can use the preload method on useGLTF.

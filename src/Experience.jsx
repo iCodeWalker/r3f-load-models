@@ -2,16 +2,16 @@
 import { Suspense } from "react";
 import { OrbitControls } from "@react-three/drei";
 import { Perf } from "r3f-perf";
-// import { useLoader } from "@react-three/fiber";
-// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-// import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+import { useLoader } from "@react-three/fiber";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 
 import Model from "./Model";
 import Placeholder from "./Placeholder";
 
 export default function Experience() {
   // ######### Loading a model
-  //   const model = useLoader(GLTFLoader, "./hamburger.glb");
+  const model = useLoader(GLTFLoader, "./hamburger.glb");
 
   // ########### Using DRACOLoader() #############
   //   const dracoModel = useLoader(GLTFLoader, "./hamburger-draco.glb", (loader) => {
@@ -51,11 +51,13 @@ export default function Experience() {
       </mesh>
 
       {/* adding a model in the scene */}
-      {/* <primitive object={model.scene} scale={6} position-y={-1} /> */}
+      <primitive object={model.scene} scale={0.4} position-y={-1} />
       {/* adding a draco model in the scene */}
 
       {/* <primitive object={dracoModel.scene} scale={0.3} /> */}
-      <Suspense
+
+      {/* Lazy loading using Suspence component for bigger models */}
+      {/* <Suspense
         // fallback={
         //   <mesh position-y={0.6} scale={[2, 3, 2]}>
         //     <boxGeometry args={[1, 1, 1, 2, 2, 2]} />
@@ -65,7 +67,7 @@ export default function Experience() {
         fallback={<Placeholder position-y={0.6} scale={[2, 3, 2]} />}
       >
         <Model />
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }
