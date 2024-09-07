@@ -1,4 +1,4 @@
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, Clone } from "@react-three/drei";
 // import { useLoader } from "@react-three/fiber";
 // import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 // import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
@@ -18,7 +18,16 @@ const Model = () => {
   // ############ Loading model using gltf loader of drei ###############
   const model = useGLTF("./hamburger.glb");
 
-  return <primitive object={model.scene} scale={6} position-y={-1} />;
+  return (
+    // ################## for multiple instances of the models ###########
+    // Just replace primitive component with clone component
+    // <primitive object={model.scene} scale={6} position-y={-1} />
+    <>
+      <Clone object={model.scene} scale={0.3} position-y={-1} position-x={-4} />
+      <Clone object={model.scene} scale={0.3} position-y={-1} position-x={0} />
+      <Clone object={model.scene} scale={0.3} position-y={-1} position-x={4} />
+    </>
+  );
 };
 
 export default Model;

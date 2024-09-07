@@ -51,3 +51,7 @@
     By user perspective we need to load the model as soon as possible to avoid laoding delays.
 
     We can use the preload method on useGLTF.
+
+## Multiple instances
+
+    If we want ot have multiple models in the scene. We can use the Clone helper that Drei provides.

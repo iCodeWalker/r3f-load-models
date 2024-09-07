@@ -51,13 +51,13 @@ export default function Experience() {
       </mesh>
 
       {/* adding a model in the scene */}
-      <primitive object={model.scene} scale={0.4} position-y={-1} />
+      {/* <primitive object={model.scene} scale={0.4} position-y={-1} /> */}
       {/* adding a draco model in the scene */}
 
       {/* <primitive object={dracoModel.scene} scale={0.3} /> */}
 
       {/* Lazy loading using Suspence component for bigger models */}
-      {/* <Suspense
+      <Suspense
         // fallback={
         //   <mesh position-y={0.6} scale={[2, 3, 2]}>
         //     <boxGeometry args={[1, 1, 1, 2, 2, 2]} />
@@ -67,7 +67,7 @@ export default function Experience() {
         fallback={<Placeholder position-y={0.6} scale={[2, 3, 2]} />}
       >
         <Model />
-      </Suspense> */}
+      </Suspense>
     </>
   );
 }
