@@ -9,6 +9,7 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import Model from "./Model";
 import Placeholder from "./Placeholder";
 import Hamburger from "./Hamburger";
+import Fox from "./Fox";
 
 export default function Experience() {
   // ######### Loading a model
@@ -38,7 +39,12 @@ export default function Experience() {
 
       <OrbitControls makeDefault />
 
-      <directionalLight castShadow position={[1, 2, 3]} intensity={1.5} />
+      <directionalLight
+        castShadow
+        position={[1, 2, 3]}
+        intensity={1.5}
+        shadow-normalBias={0.04} // For removing the shadow acne, we are off setting the shadow.
+      />
       <ambientLight intensity={0.5} />
 
       <mesh
@@ -70,6 +76,8 @@ export default function Experience() {
         {/* <Model /> */}
         <Hamburger scale={0.36} />
       </Suspense>
+
+      <Fox />
     </>
   );
 }

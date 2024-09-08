@@ -64,3 +64,61 @@
 
     The GLTf -> React Three fiber does the same.
     https://gltf.pmnd.rs/
+
+## Fixing Shadows
+
+    The shadow seems to be a bit bluring and have strips on the surface due to a phenomena called shadow acne,
+    it happens due to models casting shadows on itself.
+
+    As the meshes are casting and receiving shadows, and the models have round shape. Due to this models casting shadows on itself.
+
+    We can fix this using "shadow-normalBias"
+
+## Animation
+
+    We are going to create a Fox component, load any model from the public folder with useGLTf and add it to the scene.
+
+    We have a drei helper for the animations called "useAnimations".
+
+    We have animations inside the model in the array named "animations"
+
+    useAnimations requires 2 arguments, one animations array and other is the scene of the model.
+
+    accessing the animations after the first render so we use useEffect hook when we have to access the animations.
+
+    Note : useAnimations helper and react three fiber will take care of updating the animation on each frame.
+
+## Animation controls
+
+    useEffect(() => {
+    // const action = animations.actions.Run;
+
+    // For using animations from the leva
+    const action = animations.actions[animationName];
+    // We need to play the animation the user choose from the leva so add the animationName in the dependency array
+    console.log(action);
+    // We need to remove or fade away the previous actions as if don't do this react three fiber will play all the
+    // animations together and will give us an unwanted animation.
+
+    // We are going to fade it in by adding fadeIn before the play.
+    // add reset() to start the animation from starting
+    action.reset().fadeIn(0.6).play();
+    // action.play(); // To play the animation
+
+    // We also need to dispose the previous action.
+
+    return () => {
+      action.fadeOut(0.6);
+    };
+
+    // ###################################################################################
+
+    // If we want the fox to start walking after a few seconds we can use various methods available in
+    // AnimationAction like crossfadeform which is going to fadeOut the Run and fadeIn the Walk.
+
+    // setTimeout(() => {
+    //   animations.actions.Walk.play();
+    //   animations.actions.Walk.crossFadeFrom(animations.actions.Run, 1);
+    // }, 2000);
+
+}, [animationName]);
